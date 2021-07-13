@@ -1,0 +1,62 @@
+{
+  "name": "setupsg",
+  "version": "1.0.0",
+  "description": "setup ui, sertup database",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --fix --ext .js .",
+    "knex": "node_modules/knex/bin/cli.js",
+    "dev": "nodemon --exec babel-node src/bin/start.js",
+    "start": "npm run build && node ./dist/bin/start.js",
+    "clean": "rm -rf build && mkdir build",
+    "build:babel": "babel ./src -d ./build/src",
+    "build": "npm run clean && npm run build:babel",
+    "create:migration": "npm run knex migrate:make",
+    "migrate:latest": "npm run knex migrate:latest",
+    "migrate:rollback": "npm run knex migrate:rollback",
+    "migrate:reset": "npm run migrate:rollback && npm run migrate:latest && npm run seed:run",
+    "seed:run": "npm knex seed:run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bangpham2325/SGroupBackEnd.git"
+  },
+  "keywords": [
+    "bangpham2325"
+  ],
+  "author": "bangpham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bangpham2325/SGroupBackEnd/issues"
+  },
+  "homepage": "https://github.com/bangpham2325/SGroupBackEnd#readme",
+  "dependencies": {
+    "@babel/runtime": "^7.14.6",
+    "@types/express": "^4.17.13",
+    "babe": "^0.0.1",
+    "babel-node": "*",
+    "debug": "^2.6.9",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "http": "*",
+    "knex": "^0.95.6",
+    "mysql": "^2.18.1",
+    "path": "^0.12.7",
+    "pug": "^3.0.2",
+    "sqlite3": "^5.0.2",
+    "typescript": "^4.3.5"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.14.6",
+    "@babel/node": "^7.14.7",
+    "@babel/plugin-proposal-decorators": "^7.14.5",
+    "@babel/plugin-transform-runtime": "^7.14.5",
+    "@babel/preset-env": "^7.14.7",
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "eslint": "^7.30.0",
+    "eslint-config-google": "^0.14.0",
+    "nodemon": "^2.0.10"
+  }
+}

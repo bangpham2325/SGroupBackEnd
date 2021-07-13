@@ -1,0 +1,171 @@
+extends ../layout/main.pug
+block content
+    .container.body_blog
+        .row.row-cols-2.algin-item-center.mb-5
+            each article in articles
+            .col-lg-6.col-md-12
+                .card(style='width: 80%; margin:auto;')
+                    .card_Img
+                    img.card-img-top(src=`${article.url` alt='...')
+                    .card-body
+                    .post-tag
+                        a(href='') #PHOTO
+                        a(href='') #{article.tag}
+                    h3.post-title
+                        a(href='') #{article.title}
+                    .post-info
+                        a(href='')
+                        | by admin
+                        a(href='')
+                        | 56
+        div.py-3
+          div.my-3
+              h2.text-center
+                a(href=`http://localhost:3000/articles/${article.slug}`)
+                  strong #{article.title}
+              .text-center
+                img.mx-auto(src=`${article.thumbnail}`, alt="")
+              br
+              p #{article.content}
+            .col-lg-6.col-md-12
+                .card(style='width: 80%; margin:auto;')
+                    .card_Img
+                    img.card-img-top(src='https://rscard.px-lab.com/html/img/uploads/thumb-449x286-1.jpg' alt='...')
+                    .card-body
+                    .post-tag
+                        a(href='') #PHOTO
+                        a(href='') #ARCHITECT
+                    h3.post-title
+                        a(href='') IMAGE POST
+                    .post-info
+                        a(href='')
+                        | by admin
+                        a(href='')
+                        | 56
+            .col-lg-6.col-md-12
+                .card(style='width: 80%; margin:auto;')
+                    .card_Img
+                    img.card-img-top(src='https://rscard.px-lab.com/html/img/uploads/thumb-449x286-2.jpg' alt='...')
+                    .card-body
+                    .post-tag
+                        a(href='') #PHOTO
+                        a(href='') #ARCHITECT
+                    h3.post-title
+                        a(href='') IMAGE POST
+                    .post-info
+                        a(href='')
+                        | by admin
+                        a(href='')
+                        | 56
+        .row.row-cols-2.algin-item-center.mb-5
+            .col-lg-6.col-md-12
+                .card(style='width: 80%; margin:auto;')
+                    .card_Img
+                    img.card-img-top(src='https://rscard.px-lab.com/html/img/uploads/thumb-449x286-3.jpg' alt='...')
+                    .card-body
+                    .post-tag
+                        a(href='') #PHOTO
+                        a(href='') #ARCHITECT
+                    h3.post-title
+                        a(href='') IMAGE POST
+                    .post-info
+                        a(href='')
+                        | by admin
+                        a(href='')
+                        | 56
+            .col-lg-6.col-md-12
+                .card(style='width: 80%; margin:auto;')
+                    .card_Img
+                    img.card-img-top(src='https://rscard.px-lab.com/html/img/uploads/thumb-449x286-4.jpg' alt='...')
+                    .card-body
+                    .post-tag
+                        a(href='') #PHOTO
+                        a(href='') #ARCHITECT
+                    h3.post-title
+                        a(href='') IMAGE POST
+                    .post-info
+                        a(href='')
+                        | by admin
+                        a(href='')
+                        | 56
+        .row.row-cols-2.algin-item-center.mb-5
+            .col-lg-6.col-md-12
+                .card(style='width: 80%; margin:auto;')
+                    .card_Img
+                    img.card-img-top(src='https://rscard.px-lab.com/html/img/uploads/thumb-449x286-5.jpg' alt='...')
+                    .card-body
+                    .post-tag
+                        a(href='') #PHOTO
+                        a(href='') #ARCHITECT
+                    h3.post-title
+                        a(href='') IMAGE POST
+                    .post-info
+                        a(href='')
+                        | by admin
+                        a(href='')
+                        | 56
+                .col-lg-6.col-md-12
+                .card(style='width: 80%; margin:auto;')
+                    .card_Img
+                    img.card-img-top(src='https://rscard.px-lab.com/html/img/uploads/thumb-449x286-6.jpg' alt='...')
+                    .card-body
+                    .post-tag
+                        a(href='') #PHOTO
+                        a(href='') #ARCHITECT
+                    h3.post-title
+                        a(href='') IMAGE POST
+                    .post-info
+                        a(href='')
+                        | by admin
+                        a(href='')
+                        | 56
+        .row.row-cols-2.algin-item-center
+            .col-lg-6.col-md-12
+                .card(style='width: 80%; margin:auto;')
+                    .card_Img
+                    img.card-img-top(src='https://rscard.px-lab.com/html/img/uploads/thumb-449x286-7.jpg' alt='...')
+                    .card-body
+                    .post-tag
+                        a(href='') #PHOTO
+                        a(href='') #ARCHITECT
+                    h3.post-title
+                        a(href='') IMAGE POST
+                    .post-info
+                        a(href='')
+                        | by admin
+                        a(href='')
+                        | 56
+            .col-lg-6.col-md-12
+                .card(style='width: 80%; margin:auto;')
+                    .card_Img
+                    img.card-img-top(src='https://rscard.px-lab.com/html/img/uploads/thumb-449x286-8.jpg' alt='...')
+                    .card-body
+                    .post-tag
+                        a(href='') #PHOTO
+                        a(href='') #ARCHITECT
+                    h3.post-title
+                        a(href='') IMAGE POST
+                    .post-info
+                        a(href='')
+                        | by admin
+                        a(href='')
+                        | 56
+        .row
+            nav(aria-label='Page navigation example')
+                ul.pagination.justify-content-center
+                li.page-item
+                    a.page-link(href='#' aria-label='Previous')
+                    span(aria-hidden='true') &laquo;
+                li.page-item
+                    a.page-link(href='#') 1
+                li.page-item
+                    a.page-link(href='#') 2
+                li.page-item
+                    a.page-link(href='#') 3
+                li.page-item
+                    a.page-link(href='#') 4
+                li.page-item
+                    a.page-link(href='#') 5
+                li.page-item
+                    a.page-link(href='#' aria-label='Next')
+                    span(aria-hidden='true') &raquo;
