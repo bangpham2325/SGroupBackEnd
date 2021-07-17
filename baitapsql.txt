@@ -1,0 +1,79 @@
+câu 1: select * from nhacungcap
+
+câu 2: SELECT `MAHANG`, `TENHANG`, `SOLUONG` FROM mathang
+
+câu 3: SELECT concat(`HO`," ", `TEN`) as HOTEN, `DIACHI`,year(`NGAYLAMVIEC`) FROM NHANVIEN
+
+câu 4: SELECT DIACHI,DIENTHOAI FROM nhacungcap WHERE TENGIAODICH ="VINAMILK"
+
+câu 5: SELECT MAHANG,TENHANG FROM mathang WHERE GIAHANG > 100000 AND SOLUONG <50
+
+câu 6: SELECT mathang.MAHANG,nhacungcap.TENCONGTY FROM mathang 
+       LEFT JOIN nhacungcap ON mathang.NHACUNGCAP_MACONGTY = nhacungcap.MACONGTY
+
+câu 7: SELECT mathang.MAHANG,mathang.TENHANG,nhacungcap.TENCONGTY FROM mathang LEFT JOIN nhacungcap 
+       ON mathang.NHACUNGCAP_MACONGTY = nhacungcap.MACONGTY WHERE nhacungcap.TENGIAODICH ="VIETTIEN"
+
+câu 8: SELECT DISTINCT(nhacungcap.TENCONGTY),nhacungcap.DIACHI FROM mathang LEFT JOIN nhacungcap 
+        ON mathang.NHACUNGCAP_MACONGTY = nhacungcap.MACONGTY LEFT JOIN loaihang 
+        ON mathang.LOAIHANG_MALOAIHANG = loaihang.MALOAIHANG WHERE loaihang.TENLOAIHANG="Thực phẩm"
+
+câu 9: SELECT khachhang.TENGIAODICH FROM dondathang 
+        INNER JOIN khachhang ON dondathang.KHACHHANG_MAKHACHHANG = khachhang.MAKHACHHANG 
+        INNER JOIN chitietdathang ON dondathang.SOHOADON = chitietdathang.DONDATHANG_SOHOADON 
+        INNER JOIN mathang ON chitietdathang.MATHANG_MAHANG = mathang.MAHANG 
+        WHERE mathang.TENHANG ="SUA HOP"
+
+câu 10: SELECT khachhang.TENCONGTY,CONCAT(nhanvien.HO," ",nhanvien.TEN) AS HOTEN,dondathang.NGAYGIAOHANG,dondathang.NOIGIAOHANG 
+        FROM dondathang INNER JOIN khachhang ON dondathang.KHACHHANG_MAKHACHHANG = khachhang.MAKHACHHANG 
+        INNER JOIN nhanvien ON dondathang.NHANVIEN_MANHANVIEN = nhanvien.MANHANVIEN 
+        WHERE dondathang.SOHOADON="1"
+câu 11: SELECT TEN,(LUONGCOBAN +LUONGPHUCAP) AS luong FROM nhanvien
+câu 12: SELECT chitietdathang.MATHANG_MAHANG,(SOLUONG*GIABAN-SOLUONG*GIABAN*MUCGIAMGIA/100) AS TIEN FROM chitietdathang WHERE chitietdathang.DONDATHANG_SOHOADON=3
+câu 13: SELECT DISTINCT(khachhang.TENGIAODICH) FROM khachhang INNER JOIN nhacungcap on khachhang.TENGIAODICH = nhacungcap.TENGIAODICH
+câu 14: SELECT DISTINCT(concat(a.HO," ", a.TEN)) as hoten,a.NGAYSINH FROM nhanvien a INNER JOIN nhanvien b on a.NGAYSINH = b.NGAYSINH AND a.MANHANVIEN <> b.MANHANVIEN
+câu 15: SELECT khachhang.TENCONGTY,khachhang.DIACHI FROM dondathang INNER JOIN khachhang on dondathang.NOIGIAOHANG = khachhang.DIACHI
+câu 16: SELECT TENCONGTY,TENGIAODICH,DIACHI,DIENTHOAI FROM khachhang UNION SELECT TENCONGTY,TENGIAODICH,DIACHI,DIENTHOAI FROM nhacungcap
+câu 17: SELECT mathang.MAHANG,mathang.TENHANG FROM mathang WHERE NOT EXISTS(SELECT * FROM chitietdathang WHERE chitietdathang.MATHANG_MAHANG = mathang.MAHANG)
+câu 18: SELECT concat(HO," ",TEN) AS HOTEN FROM nhanvien WHERE NOT EXISTS(SELECT * FROM dondathang WHERE dondathang.NHANVIEN_MANHANVIEN = nhanvien.MANHANVIEN)
+câu 19: SELECT concat(HO," ",TEN) as HOTEN FROM nhanvien WHERE LUONGCOBAN = (SELECT MAX(LUONGCOBAN) FROM nhanvien)
+câu 20: SELECT khachhang.TENGIAODICH,chitietdathang.MATHANG_MAHANG,SUM(SOLUONG*GIABAN-SOLUONG*GIABAN*MUCGIAMGIA/100) as TONGTIEN
+ FROM dondathang INNER JOIN khachhang on dondathang.KHACHHANG_MAKHACHHANG = khachhang.MAKHACHHANG 
+ INNER JOIN chitietdathang on dondathang.SOHOADON = chitietdathang.DONDATHANG_SOHOADON GROUP BY dondathang.KHACHHANG_MAKHACHHANG,khachhang.TENGIAODICH
+
+
+câu 21:  
+câu 22: 
+câu 23:  
+câu 24: 
+câu 25: 
+câu 26: 
+câu 27: 
+câu 28: 
+câu 29: 
+câu 30: 
+câu 31:
+câu 32:
+UPDATE
+câu 33: UPDATE dondathang SET dondathang.NGAYCHUYENHANG=dondathang.NGAYDATHANG WHERE dondathang.NGAYCHUYENHANG IS NULL
+câu 34: UPDATE mathang SET mathang.SOLUONG = mathang.SOLUONG*2
+câu 35: UPDATE dondathang INNER JOIN khachhang 
+    ON dondathang.KHACHHANG_MAKHACHHANG = khachhang.MAKHACHHANG 
+    SET dondathang.NOIGIAOHANG = khachhang.DIACHI WHERE dondathang.NOIGIAOHANG IS NUL
+câu 36: UPDATE khachhang INNER JOIN nhacungcap ON khachhang.TENCONGTY = nhacungcap.TENCONGTY 
+SET khachhang.DIACHI = nhacungcap.DIACHI, khachhang.DIENTHOAI = nhacungcap.DIENTHOAI, khachhang.EMAIL = nhacungcap.email, khachhang.FAX = nhacungcap.FAX 
+WHERE khachhang.TENGIAODICH = nhacungcap.TENGIAODICH
+câu 37: UPDATE nhanvien SET nhanvien.LUONGCOBAN = nhanvien.LUONGCOBAN*1.5 
+WHERE nhanvien.MANHANVIEN = (SELECT nhanvien.MANHANVIEN FROM dondathang 
+INNER JOIN chitietdathang on dondathang.SOHOADON = chitietdathang.DONDATHANG_SOHOADON WHERE nhanvien.MANHANVIEN = dondathang.NHANVIEN_MANHANVIEN 
+GROUP BY dondathang.NHANVIEN_MANHANVIEN HAVING SUM(SOLUONG)>100)
+câu 38:UPDATE nhanvien set nhanvien.LUONGPHUCAP = nhanvien.LUONGCOBAN/2 WHERE nhanvien.MANHANVIEN IN (SELECT dondathang.NHANVIEN_MANHANVIEN FROM dondathang INNER JOIN chitietdathang on dondathang.SOHOADON = chitietdathang.DONDATHANG_SOHOADON GROUP BY dondathang.NHANVIEN_MANHANVIEN HAVING SUM(SOLUONG)>= ALL (SELECT SUM(SOLUONG) FROM dondathang INNER JOIN chitietdathang on dondathang.SOHOADON = chitietdathang.DONDATHANG_SOHOADON GROUP BY dondathang.NHANVIEN_MANHANVIEN))
+câu 39: UPDATE nhanvien SET nhanvien.LUONGCOBAN = nhanvien.LUONGCOBAN*0.85 WHERE NOT EXISTS(SELECT dondathang.NHANVIEN_MANHANVIEN FROM dondathang WHERE dondathang.NHANVIEN_MANHANVIEN = nhanvien.MANHANVIEN)
+câu 40: UPDATE dondathang SET sotien = (SELECT sum(chitietdathang.SOLUONG*chitietdathang.GIABAN*(1+chitietdathang.MUCGIAMGIA))FROM chitietdathang WHERE dondathang.SOHOADON = chitietdathang.DONDATHANG_SOHOADON GROUP BY chitietdathang.DONDATHANG_SOHOADON)
+
+DELETE
+câu 41: DELETE FROM nhanvien WHERE round(DATEDIFF(CURDATE(),NGAYLAMVIEC)/365,0) >40
+câu 42: DELETE FROM dondathang WHERE YEAR(dondathang.NGAYDATHANG)<2000
+câu 43: DELETE FROM loaihang WHERE NOT EXISTS(SELECT * FROM mathang WHERE mathang.LOAIHANG_MALOAIHANG = loaihang.MALOAIHANG)
+câu 44: DELETE FROM khachhang WHERE NOT EXISTS(SELECT * FROM dondathang WHERE dondathang.KHACHHANG_MAKHACHHANG = khachhang.MAKHACHHANG)
+câu 45: DELETE FROM mathang WHERE mathang.SOLUONG =0 AND NOT EXISTS(SELECT * FROM chitietdathang WHERE chitietdathang.MATHANG_MAHANG = mathang.MAHANG)
